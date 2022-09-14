@@ -1,0 +1,9 @@
+
+@import './styles/base/reset.scss';
+@import './styles/base/colors.scss';
+@import './styles/base/typography.scss';
+
+
+h1{
+    color:var(--main-clr-purple);
+}
