@@ -2,8 +2,12 @@
 @import './styles/base/reset.scss';
 @import './styles/base/colors.scss';
 @import './styles/base/typography.scss';
+@import './styles/base/utils.scss';
+@import './styles/partials/authLayout.scss';
 
 
-h1{
-    color:var(--main-clr-purple);
+
+body{
+   min-height:100vh;
+ 
 }
