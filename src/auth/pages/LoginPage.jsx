@@ -7,8 +7,8 @@ export const LoginPage = () => {
      <h1>Login</h1>
 
       <form>
-       <label className="d-block" for="email" id="email" aria-label="email">
-         <input type="email" name="email" placeholder="demo@gmail.com" aria-labelledby="email"/>
+       <label className="d-block" for="email" id="emailInput" aria-label="email">
+         <input type="email" name="email" placeholder="demo@gmail.com"/>
        </label>
        
 
