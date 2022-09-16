@@ -1,0 +1,44 @@
+
+button{
+ border-radius: 10px;
+ border:none;
+ cursor: pointer;
+ background-color:var(--btn-background,var(--main-clr-purple)) ;
+ color:var(--btn-color,var(--main-clr-white));
+ font-weight: 700;
+ font-size:var(--small-font);
+ transition:background 300ms ease-in-out;
+
+ &:hover{
+    background-color: var(--btn-background,var(--clr-opaque-purple));
+ }
+}
+
+.btn-blue{
+    --btn-background:var(--main-clr-blue);
+   
+    &:hover{
+        --btn-background:var(--clr-opaque-blue);
+     }
+}
+
+.btn-black{
+    --btn-background:var( --secondary-clr-black);
+   
+    &:hover{
+        --btn-background:var(--clr-opaque-secondary-black);
+     }
+}
+
+.btn-red{
+    --btn-background:var(--main-clr-red);
+   
+    &:hover{
+        --btn-background:var(--clr-opaque-red);
+     }
+}
+
+
+
+
+
