@@ -14,13 +14,15 @@ export const UseForm = (initialState = {},formValidation = {}) => {
         setValues(initialState)
     }
 
+    
+
     const validateForm = () =>{
         const errors = [];
   
      for(const formField in formValidation){
         
         if(values[formField] === ''){
-            errors.push(`${formField} cannot be empty`);
+            errors.push({[formField]:`${formField} is required`});
            }
 
             // if(formValidation[formField]?.isValid){

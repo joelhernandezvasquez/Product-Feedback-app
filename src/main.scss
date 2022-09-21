@@ -20,10 +20,15 @@ a{
      color:var( --clr-opaque-secondary-black);
    }
 }
-
+form label{
+   font-size: clamp(var(--small-font), 1.7vh, var(--medium-font));
+   color:var(--main-clr-dark-black);
+   
+}
 form input{
    outline:none;
    transition: all 300ms ease-in-out;
+   margin-top: 5px;
    
    &:focus{
       border:1px solid var(--main-clr-blue);
