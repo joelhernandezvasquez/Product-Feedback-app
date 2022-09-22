@@ -20,6 +20,8 @@ a{
      color:var( --clr-opaque-secondary-black);
    }
 }
+
+
 form label{
    font-size: clamp(var(--small-font), 1.7vh, var(--medium-font));
    color:var(--main-clr-dark-black);

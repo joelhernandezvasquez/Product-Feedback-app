@@ -14,9 +14,23 @@ export const LoginForm = () => {
        validateForm();
     }
 
-
   return (
+
     <form className="auth-logIn-form" onSubmit = {handleSubmit}>
+      
+      {errors?.length > 0 &&
+      <Error>
+        <p id="errors" className="fw-700">Error: Please correct the following issues</p>
+        <ul aria-describedby="errors">
+        {errors.map((error,index)=>{
+          const errorMessage = Object.values(error);
+          return <li key={index}>{errorMessage}</li>
+         })}
+        </ul>
+        
+      </Error>
+      }
+
     <label className="d-block capitalize" htmlFor="email" >
       email
       <input type="email" 
@@ -46,15 +60,7 @@ export const LoginForm = () => {
     </label>
     
     <button className="btn-blue" type="submit">Log in</button>
-    
-     {errors?.length > 0 &&
-      <Error>
-         {errors.map((error,index)=>{
-          const errorMessage = Object.values(error);
-          return <p key={index}>{errorMessage}</p>
-         })}
-      </Error>
-      }
+      
   </form>
   )
 }

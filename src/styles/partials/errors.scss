@@ -1,17 +1,22 @@
 
 
 .error-message-container{
-  text-align: center;
-  background-color:var(--main-clr-red);
+  background:#da344d;
   color:var(--main-clr-white);
   font-size:var( --small-font);
   padding-top:10px;
   padding-bottom: 10px;
   border-radius: 8px;
-  font-weight: 700;
+  padding-left:16px;
+  padding-right:16px;
+
+  & > *{
+    padding-bottom: 12px;
+  
+  }
 }
 
 .error-input{
-  border:1px solid var(--main-clr-red)
+  border:1px solid #da344d;
  
 }
