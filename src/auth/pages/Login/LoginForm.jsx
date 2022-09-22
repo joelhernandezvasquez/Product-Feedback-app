@@ -16,7 +16,7 @@ export const LoginForm = () => {
 
   return (
 
-    <form className="auth-logIn-form" onSubmit = {handleSubmit}>
+    <form className="auth-form" onSubmit = {handleSubmit}>
       
       {errors?.length > 0 &&
       <Error>

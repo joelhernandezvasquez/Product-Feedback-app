@@ -24,10 +24,14 @@ export const UseForm = (initialState = {},formValidation = {}) => {
             errors.push({[formField]:`${fieldName} cannot be blank`});
            }
 
-            // if(formValidation[formField]?.isValid){
-            //     const ruleValidation = formValidation[formField]?.isValid;
-            //     console.log(ruleValidation('ddfd'))
-            // }
+            if(formValidation[formField]?.isValid){
+                const ruleValidation = formValidation[formField]?.isValid;
+                if(!ruleValidation(values[formField]))
+                {
+                errors.push({[formField]:`${formValidation[formField]?.message}`})
+                }
+                 
+            }
        }
 
 

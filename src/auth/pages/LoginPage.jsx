@@ -15,7 +15,8 @@ export const LoginPage = () => {
       <FaGoogle/>
        Continue with Google
        </button>
-        <Link className="d-block mt-20 text-center" to={"/register"}> Can’t log in? Create an account?</Link>
+       
+        <Link className="d-block mt-20 text-center" to={"/auth/register"}> Can’t log in? Create an account</Link>
 
     </div>
    </AuthLayout>
