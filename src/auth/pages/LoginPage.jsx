@@ -1,9 +1,17 @@
 import { AuthLayout } from "../layout/AuthLayout";
 import { LoginForm } from "./Login/LoginForm";
+import { startGoogleSignIn } from "../../store/auth/thunks";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { FaGoogle} from "react-icons/fa";
 
 export const LoginPage = () => {
+  const dispatch = useDispatch();
+
+  const handleSignInGoogle = () =>{
+     dispatch(startGoogleSignIn());
+     
+  }
   return (
    <AuthLayout>
     <div className="auth-container">
@@ -11,7 +19,9 @@ export const LoginPage = () => {
        <LoginForm/>
 
      <span className="d-block text-center uppercase fs-smallest mt-20">or</span>
-      <button className="btn-black btn-google mt-25">
+      <button className="btn-black btn-google mt-25"
+       onClick={handleSignInGoogle}
+      >
       <FaGoogle/>
        Continue with Google
        </button>

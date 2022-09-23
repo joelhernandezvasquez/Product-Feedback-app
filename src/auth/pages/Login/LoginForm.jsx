@@ -58,7 +58,6 @@ export const LoginForm = () => {
        onChange={handleChange}
        />
     </label>
-    
     <button className="btn-blue" type="submit">Log in</button>
       
   </form>
