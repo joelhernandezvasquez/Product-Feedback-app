@@ -8,8 +8,8 @@ const requiredFields = {
     fullName:{},
     email:{},
     password:{
-        isValid:(value) => value.length >=6,
-        message:'password must be minimun 6 characters long'
+        isValid:(value) => /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(value) && value.length > 6,
+        message:'must be minimun 6 characters long and contains a special character'
     }
 }
 

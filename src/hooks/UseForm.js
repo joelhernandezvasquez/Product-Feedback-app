@@ -1,5 +1,6 @@
 
 import {useState}from 'react';
+import { firstLetterUppercase } from '../helpers';
 
 export const UseForm = (initialState = {},formValidation = {}) => {
   
@@ -7,7 +8,7 @@ export const UseForm = (initialState = {},formValidation = {}) => {
     const [errors,setErrors] = useState([]);
 
     const handleChange = ({target}) =>{
-        setValues({...values,[target.name]:target.value })
+        setValues({...values,[target.name]:target.value });
     }
 
     const resetForm = () =>{
@@ -20,20 +21,18 @@ export const UseForm = (initialState = {},formValidation = {}) => {
      for(const formField in formValidation){
         
         if(values[formField] === ''){
-            const fieldName = formField[0].toUpperCase().concat(formField.slice(1));
+            const fieldName = firstLetterUppercase(formField);
             errors.push({[formField]:`${fieldName} cannot be blank`});
            }
 
-            if(formValidation[formField]?.isValid){
+            if(formValidation[formField]?.isValid && values[formField] !==''){
                 const ruleValidation = formValidation[formField]?.isValid;
-                if(!ruleValidation(values[formField]))
-                {
-                errors.push({[formField]:`${formValidation[formField]?.message}`})
+                if(!ruleValidation(values[formField])){
+                    const fieldName = firstLetterUppercase(formField);
+                   errors.push({[formField]:`${fieldName} ${formValidation[formField]?.message}`})
                 }
-                 
             }
        }
-
 
        setErrors(errors);
 
