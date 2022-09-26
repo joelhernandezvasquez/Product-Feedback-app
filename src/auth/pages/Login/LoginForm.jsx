@@ -1,17 +1,23 @@
-
+import { useDispatch, useSelector } from "react-redux";
+import { startLoginWithEmailAndPassword } from "../../../store/auth/thunks";
 import { UseForm } from "../../../hooks/UseForm";
 import {Error} from '../../../error/Error';
 import { isFound} from "../../../helpers/isFound";
 
+const formData = {email:'',password:''};
+const requiredFields = {email:{},password:{}};
+
 export const LoginForm = () => {
-    const formData = {email:'',password:''};
-    const requiredFields = {email:{},password:{}};
-    
+    const dispatch = useDispatch();
+    const {errorMessage}  = useSelector((state) => state.auth);
+
     const {email,password,handleChange,validateForm,errors=[]} = UseForm(formData,requiredFields);
 
     const handleSubmit = (e) =>{
      e.preventDefault();
        validateForm();
+      
+        dispatch(startLoginWithEmailAndPassword(email,password));
     }
 
   return (
@@ -27,7 +33,6 @@ export const LoginForm = () => {
           return <li key={index}>{errorMessage}</li>
          })}
         </ul>
-        
       </Error>
       }
 
@@ -42,7 +47,6 @@ export const LoginForm = () => {
        placeholder="demo@gmail.com"
        onChange={handleChange}
        />
-      
     </label>
     
 
@@ -58,6 +62,11 @@ export const LoginForm = () => {
        onChange={handleChange}
        />
     </label>
+     {errorMessage &&(
+           <Error> 
+              <p className="text-center"> {errorMessage} </p>
+           </Error>)
+      }
     <button className="btn-blue" type="submit">Log in</button>
       
   </form>

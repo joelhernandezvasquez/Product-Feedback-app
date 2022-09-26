@@ -28,3 +28,28 @@ export const signInWithGoogle = async () =>{
     }
 }
 
+export const logInWithEmailAndPassword = async ({email,password}) =>{
+    try{
+      const result = await signInWithEmailAndPassword(FirebaseAuth,email,password);
+      const {uid,email:userEmail,displayName,photoURL} = result.user;
+      const userInfo = {
+        uid,
+        userEmail,
+        displayName,
+        photoURL
+      }
+      return{
+        success:true,
+          userInfo
+      }
+    }
+    catch(err) {
+        const errorMessage = err.message;
+        return{
+           success:false,
+           errorMessage
+        }
+      
+    }
+}
+
