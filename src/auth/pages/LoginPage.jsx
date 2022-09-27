@@ -1,21 +1,21 @@
-import { useMemo } from "react";
+
 import { AuthLayout } from "../layout/AuthLayout";
 import { LoginForm } from "./Login/LoginForm";
 import { startGoogleSignIn } from "../../store/auth/thunks";
 import { useDispatch,useSelector } from "react-redux";
+import { UseAuth } from "../../hooks/UseAuth";
 import { Link } from "react-router-dom";
 import { FaGoogle} from "react-icons/fa";
 
 export const LoginPage = () => {
   const {status} = useSelector((state)=> state.auth);
   const dispatch = useDispatch();
+  const {isAuthenticated} = UseAuth(status);
 
   const handleSignInGoogle = () =>{
      dispatch(startGoogleSignIn());
   }
   
-const isAuthenticated = useMemo(() => status !== 'checking',[status])
-
   
   return (
    <AuthLayout>
