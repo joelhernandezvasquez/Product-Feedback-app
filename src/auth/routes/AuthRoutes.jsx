@@ -10,7 +10,6 @@ export const AuthRoutes = () => {
     
      {/* User will be redirect to the login page if user is not in login or register */}
      <Route path="/*" element ={<Navigate to="/auth/login"/>}/>
-   
    </Routes>
   )
 }

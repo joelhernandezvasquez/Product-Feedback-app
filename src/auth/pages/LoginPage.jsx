@@ -2,27 +2,25 @@
 import { AuthLayout } from "../layout/AuthLayout";
 import { LoginForm } from "./Login/LoginForm";
 import { startGoogleSignIn } from "../../store/auth/thunks";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { UseAuth } from "../../hooks/UseAuth";
 import { Link } from "react-router-dom";
 import { FaGoogle} from "react-icons/fa";
 
 export const LoginPage = () => {
-  const {status} = useSelector((state)=> state.auth);
   const dispatch = useDispatch();
-  const {isAuthenticated} = UseAuth(status);
+  const {isAuthenticated} = UseAuth();
 
   const handleSignInGoogle = () =>{
      dispatch(startGoogleSignIn());
   }
-  
   
   return (
    <AuthLayout>
     <div className="auth-container">
      <h1 className="text-center">Log in</h1>
        <LoginForm/>
-     <span className="d-block text-center uppercase fs-smallest mt-20">or</span>
+      <span className="d-block text-center uppercase fs-smallest mt-20">or</span>
       <button className="btn-black btn-google mt-25"
       onClick={handleSignInGoogle}
       disabled={isAuthenticated}

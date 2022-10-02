@@ -11,15 +11,17 @@ const requiredFields = {email:{},password:{}};
 
 export const LoginForm = () => {
     const dispatch = useDispatch();
-    const {errorMessage,status}  = useSelector((state) => state.auth);
+    const {errorMessage}  = useSelector((state) => state.auth);
     const {email,password,handleChange,validateForm,errors=[]} = UseForm(formData,requiredFields);
-    const {isAuthenticated} = UseAuth(status);
+    const {isAuthenticated} = UseAuth();
   
     const handleSubmit = (e) =>{
+
      e.preventDefault();
        validateForm();
       
-        dispatch(startLoginWithEmailAndPassword(email,password));
+      if(email && password)
+      dispatch(startLoginWithEmailAndPassword(email,password));
     }
 
     
@@ -65,7 +67,8 @@ export const LoginForm = () => {
        onChange={handleChange}
        />
     </label>
-     {errorMessage &&(
+       
+     {errorMessage && errors?.length === 0  && (
            <Error> 
               <p className="text-center"> {errorMessage} </p>
            </Error>)

@@ -30,15 +30,10 @@ export const startLoginWithEmailAndPassword = (email,password) =>{
             
         dispatch(checkingCredentials())
             const result = await logInWithEmailAndPassword({email,password});
-            
+             console.log(result);
             if(!result.success) dispatch(logout(result))
               
              dispatch(login(result.userInfo))
 
-
-
-
-
-     
     }
 }
