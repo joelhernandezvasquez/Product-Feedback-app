@@ -1,8 +1,8 @@
 
+import { useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { startLoginWithEmailAndPassword } from "../../../store/auth/thunks";
 import { UseForm } from "../../../hooks/UseForm";
-import { UseAuth } from "../../../hooks/UseAuth";
 import {Error} from '../../../error/Error';
 import { isFound} from "../../../helpers/isFound";
 
@@ -11,9 +11,9 @@ const requiredFields = {email:{},password:{}};
 
 export const LoginForm = () => {
     const dispatch = useDispatch();
-    const {errorMessage}  = useSelector((state) => state.auth);
+    const {errorMessage,status}  = useSelector((state) => state.auth);
     const {email,password,handleChange,validateForm,errors=[]} = UseForm(formData,requiredFields);
-  //  const {isAuthenticated} = UseAuth();
+    const isAuthenticated = useMemo((status) => status ==='checking',[status]);
   
     const handleSubmit = (e) =>{
 
@@ -23,7 +23,6 @@ export const LoginForm = () => {
        }
     }
 
-    
   return (
 
     <form className="auth-form" onSubmit = {handleSubmit}>
@@ -74,7 +73,7 @@ export const LoginForm = () => {
       }
     <button className="btn-blue" 
     type="submit"
-   // disabled = {isAuthenticated}
+    disabled = {isAuthenticated}
     >
       Log in
     </button>

@@ -1,4 +1,4 @@
-
+import { useMemo } from "react";
 import { useDispatch,useSelector } from "react-redux"; 
 import { UseForm } from "../../../hooks/UseForm";
 import {Error} from '../../../error/Error';
@@ -17,16 +17,16 @@ const requiredFields = {
 
 export const CreateAccountForm = () => {
    const dispatch = useDispatch();
-   const {errorMessage} = useSelector((state)=> state.auth);
+   const {errorMessage,status} = useSelector((state)=> state.auth);
    const {fullName,email,password,handleChange,validateForm,errors} = UseForm(formData,requiredFields);
-  
+   const isAuthenticated = useMemo((status) => status ==='checking',[status]);
+   
    const handleSubmit = (e) =>{
      e.preventDefault();
      if(validateForm() && errorMessage!==''){
        dispatch(startCreatingUserWithEmailAndPassword(email,password,fullName))
      }
-
-   }
+    }
 
    return (
     <form className="auth-form" onSubmit={handleSubmit}>
@@ -86,7 +86,12 @@ export const CreateAccountForm = () => {
            </Error>)
       }
 
-    <button className="btn-blue capitalize" type="submit">create an account </button>
+    <button className="btn-blue capitalize" 
+    type="submit"
+    disabled={isAuthenticated}
+    >
+      create an account 
+    </button>
     
     </form>
   )

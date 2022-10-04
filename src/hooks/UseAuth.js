@@ -1,5 +1,5 @@
 
-import {useMemo,useEffect} from 'react'
+import {useEffect} from 'react'
 import { FirebaseAuth } from '../firebase/config';
 import { onAuthStateChanged } from "firebase/auth";
 import { login, logout } from "../store/auth/authSlice";
@@ -10,12 +10,9 @@ export const UseAuth = () => {
     const dispatch = useDispatch();
     const {status} = useSelector((state)=> state.auth);
    
-    //const isAuthenticated = useMemo((status) => status ==='checking',[status]);
-    
-
+   
     useEffect(() => {
         onAuthStateChanged(FirebaseAuth,async (user)=>{
-          console.log('use effect se ejecuto')
          
            if(!user) return dispatch(logout())
     
@@ -26,7 +23,5 @@ export const UseAuth = () => {
       },[])
 
     return status
-       // isAuthenticated,
-//status
-    
+   
 }
