@@ -10,21 +10,23 @@ export const UseAuth = () => {
     const dispatch = useDispatch();
     const {status} = useSelector((state)=> state.auth);
    
-    const isAuthenticated = useMemo((status) => status ==='checking',[status]);
+    //const isAuthenticated = useMemo((status) => status ==='checking',[status]);
     
 
     useEffect(() => {
         onAuthStateChanged(FirebaseAuth,async (user)=>{
+          console.log('use effect se ejecuto')
+         
            if(!user) return dispatch(logout())
     
            const {uid,email,displayName,photoURL} = user;
            dispatch(login({uid,email,displayName,photoURL}));
           // dispatch(startLoadingNotes());
         })
-      },[status])
+      },[])
 
-    return{
-        isAuthenticated,
-        status
-    }
+    return status
+       // isAuthenticated,
+//status
+    
 }

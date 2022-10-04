@@ -13,15 +13,14 @@ export const LoginForm = () => {
     const dispatch = useDispatch();
     const {errorMessage}  = useSelector((state) => state.auth);
     const {email,password,handleChange,validateForm,errors=[]} = UseForm(formData,requiredFields);
-    const {isAuthenticated} = UseAuth();
+  //  const {isAuthenticated} = UseAuth();
   
     const handleSubmit = (e) =>{
 
      e.preventDefault();
-       validateForm();
-      
-      if(email && password)
-      dispatch(startLoginWithEmailAndPassword(email,password));
+       if(validateForm()){
+        dispatch(startLoginWithEmailAndPassword(email,password));
+       }
     }
 
     
@@ -68,14 +67,14 @@ export const LoginForm = () => {
        />
     </label>
        
-     {errorMessage && errors?.length === 0  && (
+     {errorMessage && (
            <Error> 
               <p className="text-center"> {errorMessage} </p>
            </Error>)
       }
     <button className="btn-blue" 
     type="submit"
-    disabled = {isAuthenticated}
+   // disabled = {isAuthenticated}
     >
       Log in
     </button>

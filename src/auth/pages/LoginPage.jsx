@@ -9,7 +9,7 @@ import { FaGoogle} from "react-icons/fa";
 
 export const LoginPage = () => {
   const dispatch = useDispatch();
-  const {isAuthenticated} = UseAuth();
+  //const {isAuthenticated} = UseAuth();
 
   const handleSignInGoogle = () =>{
      dispatch(startGoogleSignIn());
@@ -23,7 +23,7 @@ export const LoginPage = () => {
       <span className="d-block text-center uppercase fs-smallest mt-20">or</span>
       <button className="btn-black btn-google mt-25"
       onClick={handleSignInGoogle}
-      disabled={isAuthenticated}
+      //disabled={isAuthenticated}
       >
       <FaGoogle/>
        Continue with Google

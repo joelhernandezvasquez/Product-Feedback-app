@@ -17,12 +17,15 @@ export const UseForm = (initialState = {},formValidation = {}) => {
 
     const validateForm = () =>{
         const errors = [];
+        let isFormValid = true;
   
      for(const formField in formValidation){
         
         if(values[formField] === ''){
             const fieldName = firstLetterUppercase(formField);
             errors.push({[formField]:`${fieldName} cannot be blank`});
+            isFormValid = false;
+            
            }
 
             if(formValidation[formField]?.isValid && values[formField] !==''){
@@ -30,11 +33,13 @@ export const UseForm = (initialState = {},formValidation = {}) => {
                 if(!ruleValidation(values[formField])){
                     const fieldName = firstLetterUppercase(formField);
                    errors.push({[formField]:`${fieldName} ${formValidation[formField]?.message}`})
+                   isFormValid = false;
                 }
             }
        }
 
        setErrors(errors);
+       return isFormValid;
 
     }
 

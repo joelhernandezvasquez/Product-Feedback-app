@@ -1,7 +1,9 @@
 
+import { useDispatch,useSelector } from "react-redux"; 
 import { UseForm } from "../../../hooks/UseForm";
 import {Error} from '../../../error/Error';
 import { isFound} from "../../../helpers/isFound";
+import { startCreatingUserWithEmailAndPassword } from "../../../store/auth/thunks";
 
 const formData = {fullName:'',email:'',password:''};
 const requiredFields = {
@@ -14,13 +16,18 @@ const requiredFields = {
 }
 
 export const CreateAccountForm = () => {
-   
+   const dispatch = useDispatch();
+   const {errorMessage} = useSelector((state)=> state.auth);
    const {fullName,email,password,handleChange,validateForm,errors} = UseForm(formData,requiredFields);
   
    const handleSubmit = (e) =>{
      e.preventDefault();
-     validateForm();
+     if(validateForm() && errorMessage!==''){
+       dispatch(startCreatingUserWithEmailAndPassword(email,password,fullName))
+     }
+
    }
+
    return (
     <form className="auth-form" onSubmit={handleSubmit}>
 
@@ -63,7 +70,7 @@ export const CreateAccountForm = () => {
 
     <label className="d-block capitalize" htmlFor="password" >
       password
-      <input type="text" 
+      <input type="password" 
        name="password" 
        className={`form-input ${errors.length > 0 && password==='' &&  isFound(errors,'password') && 'error-input'}`}
        id="passwordInput" 
@@ -72,6 +79,12 @@ export const CreateAccountForm = () => {
        onChange={handleChange}
        />
     </label>
+
+    {errorMessage && errors.length ===0 && (
+           <Error> 
+              <p className="text-center"> {errorMessage} </p>
+           </Error>)
+      }
 
     <button className="btn-blue capitalize" type="submit">create an account </button>
     

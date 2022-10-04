@@ -53,6 +53,33 @@ export const logInWithEmailAndPassword = async ({email,password}) =>{
     }
 }
 
+export const registerUserEmail = async ({email,password,displayName}) =>{
+
+  try{
+     const result = await createUserWithEmailAndPassword(FirebaseAuth,email,password);
+      const {uid,photoURL} = result.user;
+
+       // Updating the display name in firebase
+    await updateProfile(FirebaseAuth.currentUser,{displayName});
+  
+     return{
+      success:true,
+      uid,
+      email,
+      displayName,
+      photoURL
+     }
+
+  }
+  catch(error){
+       return{
+        success:false,
+        errorMessage:error.message
+       }
+  }
+}
+
+
 export const logoutFirebase = async () =>{
     return await FirebaseAuth.signOut();
   }

@@ -7,10 +7,12 @@ import { ProductFeedbackRoutes } from "../product_feedback/routes/ProductFeedbac
 
 export const AppRouter = () => {
   
-  const {status} = UseAuth();
+  const status = UseAuth();
 
-  if(status ==='checking') 
-  return <h1>Loading</h1>
+  if(status ==='checking') {
+    return <h1>Loading</h1>
+  }
+ 
 
   return (
     <Routes>
