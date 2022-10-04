@@ -1,19 +1,16 @@
-import { useDispatch } from "react-redux"
-import { startLoginOut } from "../../store/auth/thunks";
+import { FeedbackBoard } from "../components/FeedbackBoard/FeedbackBoard"
 
 export const SuggestionPage = () => {
- const dispatch = useDispatch();
 
   return (
     <> 
-    SuggestionPage 
+     <header>
+        <FeedbackBoard/>
+     </header>
 
-    <button 
-     onClick={()=> dispatch(startLoginOut())}
-      >
-      Log Out
-      </button>
-    
+     <main>
+
+     </main>
     </>
   )
 }

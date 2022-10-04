@@ -4,12 +4,13 @@
 @import './styles/base/typography.scss';
 @import './styles/base/utils.scss';
 @import './styles/partials/authLayout.scss';
+@import './styles/partials/suggestionPageLayout.scss';
 @import './styles/partials/buttons.scss';
 @import './styles/partials/errors.scss';
 
 
 
-body{
+html,body{
    min-height:100vh;
 }
 

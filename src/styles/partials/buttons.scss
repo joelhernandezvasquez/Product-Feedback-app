@@ -37,6 +37,16 @@ button{
         --btn-background:var(--clr-opaque-red);
      }
 }
+button.btn-image{
+    border-radius: 0;
+    border:none;
+    cursor: pointer;
+    background-color:transparent;
+    color:none;
+    font-weight: 400;
+    font-size:var(--small-font);
+    transition:none;  
+}
 
 
 
