@@ -37,6 +37,10 @@ button{
         --btn-background:var(--clr-opaque-red);
      }
 }
+
+.btn-opaque-pink{
+    background-color: hsla(230, 100%, 97%, 1);
+}
 button.btn-image{
     border-radius: 0;
     border:none;

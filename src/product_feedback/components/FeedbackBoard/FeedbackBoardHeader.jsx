@@ -1,5 +1,6 @@
-
+import {FeedbackBoardMenu} from './FeedbackBoardMenu';
 import openMenuIcon from '../../../assets/hamburgerIcon.png';
+
 export const FeedbackBoardHeader = () => {
   return (
     <div className="feedback-header max-width-wrapper">
@@ -12,6 +13,7 @@ export const FeedbackBoardHeader = () => {
         <img src={openMenuIcon} alt=""/>
       </button>
 
+     <FeedbackBoardMenu/>
     </div>
   )
 }
