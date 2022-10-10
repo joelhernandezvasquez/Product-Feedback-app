@@ -1,0 +1,29 @@
+
+.suggestion-filter{
+ background: var(--main-clr-dark-black);
+ color:var(--main-clr-white);
+ padding-top:12px;
+ padding-bottom:12px;
+}
+
+.suggestion-dropdown{
+    gap:5px;
+    p{
+        font-size: var(--smallest-font);
+    }
+    button{
+       gap:10px;
+       font-size: var(--smallest-font);
+       padding:0;
+    }
+    svg{
+        fill: var(--main-clr-white);
+        width:12px;
+        
+    }
+}
+
+.btn-add-feedback{
+   font-size:var(--smallest-font);
+   padding:10px 20px;
+}

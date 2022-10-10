@@ -1,11 +1,16 @@
-import { CategoryFeedback } from "../categoryFeedback/CategoryFeedback"
 
-export const FeedbackBoardMenu = () => {
+import { CategoryFeedback } from "../categoryFeedback/CategoryFeedback"
+import { RoadmapFeedback } from "../RoadmapFeedback/RoadmapFeedback"
+
+export const FeedbackBoardMenu = ({closeMenu}) => {
+
   return (
-    <aside className="feedbackBoardMobileMenu">
+   
+   <aside className="feedbackBoardMobileMenu">
        
        <div className="feedbackMenuContent">
-        <CategoryFeedback/>
+        <CategoryFeedback closeMenu = {closeMenu}/>
+        <RoadmapFeedback/>
        </div>
     </aside>
   )
