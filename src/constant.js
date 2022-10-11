@@ -46,3 +46,22 @@ export const categoryOptions = [{
 item:'Feature'
 }
 ]
+
+export const dropdownFilterOptions = [
+  {
+    id:0,
+    option:'Most Upvotes'
+  },
+  {
+    id:1,
+    option:'Least Upvotes'
+  },
+  {
+    id:2,
+    option:'Most Comments'
+  },
+  {
+    id:3,
+    option:'Least Comments'
+  },
+]
