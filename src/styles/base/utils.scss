@@ -47,9 +47,18 @@
     margin-top:25px;
 }
 
+.primary-border-radius{
+    border-radius: 10px;
+}
+
 .max-width-wrapper{
    margin-left:auto;
    margin-right:auto;
    padding-left:24px;
    padding-right: 24px;
+}
+
+
+.pink-clr{
+    background:var( --primary-bg-clr);
 }
