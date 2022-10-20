@@ -17,7 +17,6 @@ export const EmptyComments = () => {
     
       </article>
      
-    
     </section>
   )
 }

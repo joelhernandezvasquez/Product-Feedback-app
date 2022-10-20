@@ -1,5 +1,6 @@
 
 import { useSelector,useDispatch } from "react-redux";
+import PropTypes from 'prop-types';
 import {setCategory} from '../../../store/feedback-product/feedbackSlice';
 import { categoryOptions } from "../../../constant";
 
@@ -29,4 +30,7 @@ export const CategoryFeedback = ({closeMenu}) => {
       })}
     </ul>
   )
+}
+CategoryFeedback.propTypes = {
+  closeMenu:PropTypes.func.isRequired
 }

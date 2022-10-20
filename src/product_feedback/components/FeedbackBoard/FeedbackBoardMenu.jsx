@@ -1,4 +1,4 @@
-
+import PropTypes from 'prop-types';
 import { CategoryFeedback } from "../categoryFeedback/CategoryFeedback"
 import { RoadmapFeedback } from "../RoadmapFeedback/RoadmapFeedback"
 
@@ -14,4 +14,8 @@ export const FeedbackBoardMenu = ({closeMenu}) => {
        </div>
     </aside>
   )
+}
+
+FeedbackBoardMenu.propTypes = {
+  closeMenu:PropTypes.func.isRequired
 }

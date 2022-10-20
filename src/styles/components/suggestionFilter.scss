@@ -1,6 +1,6 @@
 
 .suggestion-filter{
-    position:relative;
+ position:relative;
  background: var(--main-clr-dark-black);
  color:var(--main-clr-white);
  padding-top:12px;
@@ -21,8 +21,7 @@
     }
     svg{
         fill: var(--main-clr-white);
-        width:12px;
-        
+        width:12px;   
     }
 }
 
@@ -51,7 +50,6 @@
     
 }
 .dropdown-menu{
-  
    & > *{
      padding:12px 24px;
      border-bottom: 1px solid rgba(#3A4374,0.15);

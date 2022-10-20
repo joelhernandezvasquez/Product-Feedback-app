@@ -1,7 +1,7 @@
-
+import PropTypes from 'prop-types';
 import CommentIcon from "../../../assets/comment.svg";
 
-export const FeedbackItem = ({id,title,detail,category,comments,vote}) => {
+export const FeedbackItem = ({title,detail,category,comments,vote}) => {
   return (
     <li className="feedback-item primary-border-radius">
         
@@ -24,4 +24,12 @@ export const FeedbackItem = ({id,title,detail,category,comments,vote}) => {
 
     </li>
   )
+}
+
+FeedbackItem.propTypes = {
+  title:PropTypes.string.isRequired,
+  detail:PropTypes.string.isRequired,
+  category:PropTypes.string.isRequired,
+  comments:PropTypes.array.isRequired,
+  vote:PropTypes.number.isRequired
 }
