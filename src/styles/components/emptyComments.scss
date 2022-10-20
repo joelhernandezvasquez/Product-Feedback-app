@@ -1,0 +1,33 @@
+
+
+.empty-comments{
+    margin: 32px auto 0 auto;
+    background:var(--main-clr-white);
+    height: 440px;
+
+    @media(min-width: 767px){
+       height: 600px;
+    }
+}
+
+.empty-comments-inner-container{
+   max-width: 410px;
+   margin:0 auto;
+   padding:0 24px;
+  
+  
+}
+.empty-comments-illustration{
+    margin-bottom: 30px;
+}
+
+.empty-comments-title{
+    font-size: 1.125rem;
+    color:var(--secondary-clr-black);
+    margin-bottom: 20px;
+    width: fit-content;
+}
+.empty-comments-description{
+   color:var(--main-clr-gray);
+   margin-bottom: 20px;
+}

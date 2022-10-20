@@ -1,6 +1,7 @@
-import { FeedbackBoard } from "../components/FeedbackBoard/FeedbackBoard"
-import { FeedbackList } from "../components/FeedbackList/FeedbackList"
-import { SuggestionFilter } from "../components/suggestionFilter/SuggestionFilter"
+
+import { FeedbackBoard } from "../components/FeedbackBoard/FeedbackBoard";
+import { FeedbackList } from "../components/FeedbackList/FeedbackList";
+import { SuggestionFilter } from "../components/suggestionFilter/SuggestionFilter";
 
 export const SuggestionPage = () => {
 
@@ -12,7 +13,7 @@ export const SuggestionPage = () => {
 
      <main className="pink-clr">
       <SuggestionFilter/>
-      <FeedbackList/>
+      <FeedbackList/> 
      </main>
     </>
   )

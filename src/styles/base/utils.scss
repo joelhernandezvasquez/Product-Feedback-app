@@ -19,6 +19,12 @@
 .d-flex-space-between{
     justify-content: space-between;
 }
+.d-flex-center{
+ justify-content: center;
+}
+.d-flex-column{
+    flex-direction: column;
+}
 
 .text-center{
     text-align: center;
@@ -56,6 +62,7 @@
    margin-right:auto;
    padding-left:24px;
    padding-right: 24px;
+  
 }
 
 

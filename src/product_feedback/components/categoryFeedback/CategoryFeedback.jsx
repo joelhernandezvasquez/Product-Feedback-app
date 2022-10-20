@@ -1,13 +1,15 @@
 
-import {useState} from 'react';
+import { useSelector,useDispatch } from "react-redux";
+import {setCategory} from '../../../store/feedback-product/feedbackSlice';
 import { categoryOptions } from "../../../constant";
 
 export const CategoryFeedback = ({closeMenu}) => {
   
-  const [options ,setOptions] = useState(0);
+ const {currentCategory} = useSelector((state)=> state.feedback);
+ const dispatch = useDispatch();
 
-  const selectOption = (id) =>{
-    setOptions((c) => id);
+  const onChangeCategory = (item) =>{
+    dispatch(setCategory(item));
     closeMenu();
   }
   
@@ -17,8 +19,8 @@ export const CategoryFeedback = ({closeMenu}) => {
         return (
         <li key={id}> 
         <button 
-         className={`btn-opaque-pink ${id===options && 'isSelected'}`}
-         onClick = {selectOption}
+         className={`btn-opaque-pink ${item===currentCategory && 'isSelected'}`}
+         onClick = {()=>onChangeCategory(item)}
          >
           {item}
           </button>

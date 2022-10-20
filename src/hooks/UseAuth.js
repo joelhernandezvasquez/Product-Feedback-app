@@ -4,6 +4,7 @@ import { FirebaseAuth } from '../firebase/config';
 import { onAuthStateChanged } from "firebase/auth";
 import { login, logout } from "../store/auth/authSlice";
 import { useDispatch, useSelector } from 'react-redux';
+import { startLoadingFeedbacks } from '../store/feedback-product/thunks';
 
 export const UseAuth = () => {
  
@@ -18,7 +19,7 @@ export const UseAuth = () => {
     
            const {uid,email,displayName,photoURL} = user;
            dispatch(login({uid,email,displayName,photoURL}));
-          // dispatch(startLoadingNotes());
+          dispatch(startLoadingFeedbacks());
         })
       },[])
 
