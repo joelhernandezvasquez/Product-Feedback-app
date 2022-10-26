@@ -5,11 +5,24 @@
  color:var(--main-clr-white);
  padding-top:12px;
  padding-bottom:12px;
+ margin-left:-24px;
+ margin-right: -24px;
+ padding-left:24px;
+ padding-right: 24px;
+
+ @media(min-width: $tablet-breakpoint){
+border-radius: 10px;
+margin-left:0px;
+ margin-right: 0px;
+ padding-left:24px;
+ padding-right: 24px;
+      
+ }
  
 }
 
 .suggestion-dropdown{
-   
+
     gap:5px;
     p{
         font-size: var(--smallest-font);
@@ -18,11 +31,21 @@
        gap:10px;
        font-size: var(--smallest-font);
        padding:0;
+
     }
     svg{
         fill: var(--main-clr-white);
-        width:12px;   
+        width:12px;  
+        &:hover{
+            fill:#F2F4FE;
+        } 
     }
+
+    &:hover{
+         & > *{
+            color:#F2F4FE;  
+         }
+       }
 }
 
 .btn-add-feedback{
@@ -47,7 +70,12 @@
     background:var(--main-clr-white);
     box-shadow: 0px 10px 40px -7px rgba(55, 63, 104, 0.350492);
     border-radius: 10px;
-    
+
+    @media(min-width: $tablet-breakpoint){
+        top:75px;
+      left:300px;
+    }
+       
 }
 .dropdown-menu{
    & > *{
@@ -69,3 +97,17 @@
 .suggestion-dropdown svg.rotate{
     transform: rotate(180deg);
 }
+
+.suggestion-count-container{
+    display:none;
+    
+    @media(min-width: $tablet-breakpoint){
+        display:flex;
+        gap:16px;
+        .suggestion-count-heading{
+            font-size: 1.125rem;
+            
+        }
+    }
+}
+

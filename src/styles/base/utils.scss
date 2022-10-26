@@ -1,6 +1,9 @@
 
 @import './colors.scss';
 
+$tablet-breakpoint:767px;
+$desktop-breakpoint:1200px;
+    
 .d-block{
     display:block;
 }
@@ -62,8 +65,10 @@
    margin-right:auto;
    padding-left:24px;
    padding-right: 24px;
-  
+ // border:1px solid red;
+   max-width: 825px;
 }
+
 
 
 .pink-clr{

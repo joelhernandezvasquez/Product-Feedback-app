@@ -6,7 +6,7 @@ import { SuggestionFilter } from "../components/suggestionFilter/SuggestionFilte
 export const SuggestionPage = () => {
 
   return (
-    <> 
+    <div className="suggestion-wrapper"> 
      <header>
         <FeedbackBoard/>
      </header>
@@ -15,6 +15,6 @@ export const SuggestionPage = () => {
       <SuggestionFilter/>
       <FeedbackList/> 
      </main>
-    </>
+    </div>
   )
 }

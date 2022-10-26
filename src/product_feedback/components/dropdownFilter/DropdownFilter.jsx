@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 
+
 export const DropdownFilter = (
   {options,filterOption,handleFilterOption,dropdownBodyCSSClass,dropdownMenuCSSClass}) => {
   
@@ -8,7 +9,7 @@ export const DropdownFilter = (
         <ul className={dropdownMenuCSSClass}>
           {options.map(({id,option})=>{
               if(filterOption!==option) 
-             return <li key={id} onClick={()=>handleFilterOption(option)}>{option}</li>
+             return  <li key={id} onClick={()=>handleFilterOption(option)}>{option}  </li>
           })}
         </ul>
     </aside>

@@ -1,18 +1,33 @@
-
+import { useEffect } from "react";
 import { useSelector,useDispatch } from "react-redux";
 import PropTypes from 'prop-types';
-import {setCategory} from '../../../store/feedback-product/feedbackSlice';
+import {setCategory,filterFeedback} from '../../../store/feedback-product/feedbackSlice';
 import { categoryOptions } from "../../../constant";
 
 export const CategoryFeedback = ({closeMenu}) => {
   
- const {currentCategory} = useSelector((state)=> state.feedback);
+ const {currentCategory,feedbacks} = useSelector((state)=> state.feedback);
+
  const dispatch = useDispatch();
 
   const onChangeCategory = (item) =>{
     dispatch(setCategory(item));
+       if(!closeMenu) return ;
     closeMenu();
   }
+  
+  useEffect(()=>{
+  
+    const filterFeedbacks = () =>{
+     if(currentCategory === 'All'){
+      dispatch(filterFeedback(feedbacks)); 
+       return;
+     }
+     const dataFiltered = feedbacks.filter((feedback) => feedback.category === currentCategory);
+     dispatch(filterFeedback(dataFiltered));
+   }
+    filterFeedbacks();
+ },[currentCategory,feedbacks])
   
     return (
     <ul className="category-feedback-container content">
@@ -32,5 +47,5 @@ export const CategoryFeedback = ({closeMenu}) => {
   )
 }
 CategoryFeedback.propTypes = {
-  closeMenu:PropTypes.func.isRequired
+  closeMenu:PropTypes.func
 }

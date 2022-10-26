@@ -1,5 +1,4 @@
 
-
 .empty-comments{
     margin: 32px auto 0 auto;
     background:var(--main-clr-white);
@@ -8,6 +7,7 @@
     @media(min-width: 767px){
        height: 600px;
     }
+
 }
 
 .empty-comments-inner-container{
@@ -30,4 +30,10 @@
 .empty-comments-description{
    color:var(--main-clr-gray);
    margin-bottom: 20px;
+}
+
+.empty-comment-container{
+    @media(min-width: $desktop-breakpoint){
+        padding:0 !important;
+    }
 }

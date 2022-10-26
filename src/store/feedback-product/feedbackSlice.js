@@ -6,12 +6,17 @@ export const feedbackSlice = createSlice({
        isSaving:false,
        currentCategory:'All',
        feedbacks:[],
+       feedbackFiltered:[],
        errorMessage:null
     },
     reducers: {
        getFeedbacks:(state,{payload}) =>{
         state.isSaving = false,
         state.feedbacks = payload
+       },
+       filterFeedback:(state,{payload})=>{
+       
+         state.feedbackFiltered = payload;
        },
        setCategory:(state,{payload}) =>{
          state.currentCategory = payload
@@ -25,4 +30,4 @@ export const feedbackSlice = createSlice({
 
 
 // Action creators are generated for each case reducer function
-export const { getFeedbacks,setCategory,errorMessage } = feedbackSlice.actions;
+export const { getFeedbacks,filterFeedback,setCategory,errorMessage } = feedbackSlice.actions;

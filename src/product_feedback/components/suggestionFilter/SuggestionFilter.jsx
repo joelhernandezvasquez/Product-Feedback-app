@@ -3,6 +3,7 @@ import { useState,useCallback} from 'react';
 import { UseToogle } from '../../../hooks/UseToogle';
 import { DropdownFilter } from '../dropdownFilter/DropdownFilter';
 import { dropdownFilterOptions } from '../../../constant';
+import { ShowSuggestionQuantity } from '../../views/ShowSuggestionQuantity';
 
 export const SuggestionFilter = () => {
   
@@ -15,7 +16,12 @@ export const SuggestionFilter = () => {
   },[isToggle])
  
   return (
-    <section className="max-width-wrapper suggestion-filter d-flex d-flex-space-between">
+    <section className="max-width-wrapper">
+       
+      <div className='suggestion-filter d-flex d-flex-space-between'>
+       
+       <ShowSuggestionQuantity/>
+       
        <div className="suggestion-dropdown d-flex d-flex-align-center">
         <p>Sort by :</p>
         <button className="capitalize btn-plain fw-700 d-flex d-flex-align-center" onClick={()=> toggle()}>
@@ -35,9 +41,8 @@ export const SuggestionFilter = () => {
        dropdownMenuCSSClass ={"dropdown-menu"}
        />
        )}
-       
-       <Link className="capitalize btn-add-feedback" to="/feedback"> + add feedback</Link>
-
+        <Link className="capitalize btn-add-feedback" to="/feedback"> + add feedback</Link>
+        </div> 
     </section>
   )
 }
