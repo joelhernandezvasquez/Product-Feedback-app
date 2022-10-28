@@ -69,8 +69,18 @@ $desktop-breakpoint:1200px;
    max-width: 825px;
 }
 
-
-
 .pink-clr{
     background:var( --primary-bg-clr);
+}
+
+.router-link{
+    font-weight: 700;
+    font-size:var(--smallest-font);
+    text-decoration: none;
+}
+.icon-arrow-left{
+  margin-right:16px;
+}
+.rotate-down{
+    transform:rotate(180deg);
 }

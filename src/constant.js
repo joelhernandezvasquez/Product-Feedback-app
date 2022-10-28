@@ -2,26 +2,26 @@
 
 export const categoryOptions = [{
   id:0,
-  item:'All'
+  option:'All'
 },
 {
   id:1,
-  item:"UI",
+ option:"UI",
 },
 {
   id:2,
-  item:'UX'
+  option:'UX'
 },
 {
   id:3,
-  item:'Enhacement'
+  option:'Enhacement'
 },
 {
   id:4,
-  item:'Bug'
+  option:'Bug'
 },
 {id:5,
-item:'Feature'
+option:'Feature'
 }
 ]
 

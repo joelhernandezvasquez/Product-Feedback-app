@@ -10,8 +10,8 @@ export const CategoryFeedback = ({closeMenu}) => {
 
  const dispatch = useDispatch();
 
-  const onChangeCategory = (item) =>{
-    dispatch(setCategory(item));
+  const onChangeCategory = (option) =>{
+    dispatch(setCategory(option));
        if(!closeMenu) return ;
     closeMenu();
   }
@@ -31,14 +31,14 @@ export const CategoryFeedback = ({closeMenu}) => {
   
     return (
     <ul className="category-feedback-container content">
-      {categoryOptions.map(({item,id})=>{
+      {categoryOptions.map(({option,id})=>{
         return (
         <li key={id}> 
         <button 
-         className={`btn-opaque-pink ${item===currentCategory && 'isSelected'}`}
-         onClick = {()=>onChangeCategory(item)}
+         className={`btn-opaque-pink ${option===currentCategory && 'isSelected'}`}
+         onClick = {()=>onChangeCategory(option)}
          >
-          {item}
+          {option}
           </button>
         </li>
         )
