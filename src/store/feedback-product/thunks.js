@@ -1,10 +1,7 @@
 
-import { collection, deleteDoc, doc, setDoc } from "firebase/firestore/lite";
-import { FirebaseDB } from "../../firebase/config";
+import { collection, deleteDoc, doc, setDoc,getFirestore  } from "firebase/firestore/lite";
 import { loadFeedbacks } from "../../helpers/loadsFeedback";
-import { errorMessage, getFeedbacks } from "./feedbackSlice";
-
-
+import { addNewFeedback, errorMessage, getFeedbacks, setSaving } from "./feedbackSlice";
 
 export const startLoadingFeedbacks = () =>{
   
@@ -16,5 +13,32 @@ export const startLoadingFeedbacks = () =>{
       
         dispatch(getFeedbacks(result.feedbacks))
         
+    }
+}
+
+export const startSavingFeedback = ({feedbackTitle,feedbackComment,category}) =>{
+    return async (dispatch) =>{
+
+      try{
+          dispatch(setSaving());
+          const db = getFirestore();
+         const newDoc = doc(collection(db,`feedback`));
+
+      const feedbackToFirestore = {
+        title:feedbackTitle,
+        category:category,
+        detail:feedbackComment,
+        vote:0,
+        comments:[],
+       status:'Planned'
+      }
+    
+       await setDoc(newDoc,feedbackToFirestore,{merge:true});
+       dispatch(addNewFeedback(feedbackToFirestore));
+      }
+      catch(error){
+        console.log(error.errorMessage);
+      }
+       
     }
 }

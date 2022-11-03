@@ -7,6 +7,7 @@ export const feedbackSlice = createSlice({
        currentCategory:'All',
        feedbacks:[],
        feedbackFiltered:[],
+       feedbackMessage:'',
        errorMessage:null
     },
     reducers: {
@@ -14,9 +15,17 @@ export const feedbackSlice = createSlice({
         state.isSaving = false,
         state.feedbacks = payload
        },
+       addNewFeedback:(state,{payload}) =>{
+         state.isSaving = false,
+         state.feedbacks = [...state.feedbacks,payload];
+         state.feedbackMessage = 'Feedback has been saved'
+       },
+       setSaving:(state) =>{
+        state.isSaving = true;
+        state.feedbackMessage = '';
+       },
        filterFeedback:(state,{payload})=>{
-       
-         state.feedbackFiltered = payload;
+        state.feedbackFiltered = payload;
        },
        setCategory:(state,{payload}) =>{
          state.currentCategory = payload
@@ -24,10 +33,13 @@ export const feedbackSlice = createSlice({
        errorMessage:(state,{payload}) =>{
          state.isSaving = false,
          state.errorMessage = payload
+       },
+       resetFeedbackMessage:(state) =>{
+        state.feedbackMessage = '';
        }
     }
 });
 
 
 // Action creators are generated for each case reducer function
-export const { getFeedbacks,filterFeedback,setCategory,errorMessage } = feedbackSlice.actions;
+export const { getFeedbacks,filterFeedback,setCategory,errorMessage,setSaving,addNewFeedback,resetFeedbackMessage } = feedbackSlice.actions;

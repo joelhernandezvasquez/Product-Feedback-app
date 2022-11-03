@@ -25,6 +25,29 @@ option:'Feature'
 }
 ]
 
+
+export const categoryDropdown = [{
+
+  id:0,
+ option:"UI",
+},
+{
+  id:1,
+  option:'UX'
+},
+{
+  id:2,
+  option:'Enhacement'
+},
+{
+  id:3,
+  option:'Bug'
+},
+{id:4,
+option:'Feature'
+}
+]
+
 export const dropdownFilterOptions = [
   {
     id:0,

@@ -5,7 +5,6 @@ export const isFound = (array,key) =>{
       const obj = value;
 
       if(obj.hasOwnProperty(key)){
-        
          return true;
    }
 }

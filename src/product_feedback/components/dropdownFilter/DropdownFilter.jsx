@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 export const DropdownFilter = (
   {options,filterOption,handleFilterOption,dropdownBodyCSSClass,dropdownMenuCSSClass}) => {
-   console.log(options)
+
     return (
     <aside role="dialog" className={dropdownBodyCSSClass}>
         <ul className={dropdownMenuCSSClass}>

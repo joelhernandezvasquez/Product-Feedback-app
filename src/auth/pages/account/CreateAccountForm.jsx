@@ -32,7 +32,7 @@ export const CreateAccountForm = () => {
     <form className="auth-form" onSubmit={handleSubmit}>
 
     {errors?.length > 0 &&
-      <Error>
+      <Error cssStyling={'error-message-container'}>
         <p id="errors" className="fw-700">Error: Please correct the following issues</p>
         <ul aria-describedby="errors">
         {errors.map((error,index)=>{
