@@ -14,7 +14,7 @@ import 'sweetalert2/dist/sweetalert2.css';
 const formData = {feedbackTitle:'',feedbackComment:''};
 const requiredFields = {
   feedbackTitle:{},
- feedbackComment:{}
+ feedbackComment:{},
 }
 
 export const CreateFeedbackForm = () => {
