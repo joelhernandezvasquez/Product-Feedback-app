@@ -3,13 +3,11 @@ import { UseToogle } from "../../../hooks/UseToogle";
 import { DropdownFilter } from "../dropdownFilter/DropdownFilter";
 import { categoryDropdown } from "../../../constant";
 
-
 export const DropdownFilterWrapper = ({optionFilterRef}) => {
    
     const {isToggle,toggle} = UseToogle(false);
     const [filterOption,setFilterOption] = useState(categoryDropdown[4].option);
    
-    
     const handleFilterOption = (option) =>{
         setFilterOption(option);
         toggle();

@@ -1,25 +1,21 @@
 
 import { useRef,useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { UseForm } from "../../../hooks/UseForm";
 import { DropdownFilterWrapper } from "../DropdownFilterWrapper/DropdownFilterWrapper";
 import { Error } from "../../../error/Error";
 import { isFound } from "../../../helpers/isFound";
-import  iconFeedback from '../../../assets/icon-new-feedback.svg';
-import { useDispatch, useSelector } from "react-redux";
 import { startSavingFeedback} from "../../../store/feedback-product/thunks";
 import { resetFeedbackMessage } from "../../../store/feedback-product/feedbackSlice";
+import  iconFeedback from '../../../assets/icon-new-feedback.svg';
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.css';
-
-
-
 
 const formData = {feedbackTitle:'',feedbackComment:''};
 const requiredFields = {
   feedbackTitle:{},
  feedbackComment:{}
 }
-
 
 export const CreateFeedbackForm = () => {
    const {feedbackMessage} = useSelector((state)=> state.feedback);
@@ -48,7 +44,6 @@ export const CreateFeedbackForm = () => {
    
   },[feedbackMessage])
 
-
   return (
     <form className='feedback-form primary-border-radius' onSubmit={handleSubmit}>
      
@@ -56,10 +51,7 @@ export const CreateFeedbackForm = () => {
       <h1 className="feedback-form-title fw-700">Create New Feedback</h1>
    
       <div className="feedback-input-field">
-        <label htmlFor="feedback-title"> 
-            Feedback Title 
-            <p>Add a short, descriptive headline</p>
-      </label>
+        <label htmlFor="feedback-title">  Feedback Title <p>Add a short, descriptive headline</p> </label>
        <input 
        className={`feedback-input ${errors.length > 0 && feedbackTitle==='' && isFound(errors,'feedbackTitle') && 'error-input'}`} 
        type="text" 
@@ -73,9 +65,7 @@ export const CreateFeedbackForm = () => {
       </div>
 
       <div className="feedback-input-field">
-        <label htmlFor="feedback-category"> 
-           Category 
-            <p>Choose a category for your feedback</p>
+        <label htmlFor="feedback-category"> Category <p>Choose a category for your feedback</p>
       </label>
 
       <DropdownFilterWrapper optionFilterRef = {optionFilterRef}/>
@@ -83,9 +73,7 @@ export const CreateFeedbackForm = () => {
       </div>
 
       <div className="feedback-input-field">
-        <label htmlFor="feedback-comment"> 
-        Feedback Detail
-            <p>Include any specific comments on what should be improved, added, etc.</p>
+        <label htmlFor="feedback-comment">  Feedback Detail <p>Include any specific comments on what should be improved, added, etc.</p>
       </label>
        <textarea 
        name="feedbackComment" 
