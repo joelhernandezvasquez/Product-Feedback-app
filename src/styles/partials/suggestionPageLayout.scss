@@ -244,6 +244,7 @@
 .feedback-item-comments-amount{
   grid-column: 3/4;
   justify-self: end;
+  align-self: center;
   gap:10px;
   font-size:var(--smallest-font);
   color:var(--secondary-clr-black);

@@ -1,0 +1,33 @@
+
+.post-comment{
+    background:var(--main-clr-white);
+    padding:24px;
+    margin-top:24px;
+    
+}
+.post-comment-main-heading{ 
+    font-size: 1.125rem;
+    color:var(--secondary-clr-black);
+}
+.post-comment-input{
+    width:100%;
+    border:none;
+    background:var(--primary-bg-clr);
+    min-height: 80px;
+    border-radius: 5px;
+    margin-top:24px;
+    margin-bottom: 24px;
+    padding:16px;
+    &::placeholder{
+        font-size:0.875rem;
+    }
+}
+
+.character-count-description{
+    color:var(--main-clr-gray);
+    font-size:0.875rem
+}
+.post-comment .btn-purple{
+  padding:10px 14px;
+  font-size:0.875rem;
+}

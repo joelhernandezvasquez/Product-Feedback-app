@@ -1,5 +1,4 @@
 
-
 .feedback-wrapper{
     //border:1px solid red;
     max-width: 540px;
@@ -138,4 +137,16 @@ cursor: pointer;
     margin-left:16px;
     padding:12px 24px;
   }
+}
+
+.feedback-detail-container{
+    margin-top:34px;
+}
+.feedback-detail-container header{
+    margin-bottom: 24px;
+}
+
+.btn-edit-feedback{
+  padding:10px 16px;
+  font-size:0.875rem;
 }

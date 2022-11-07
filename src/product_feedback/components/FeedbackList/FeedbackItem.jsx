@@ -1,10 +1,20 @@
 import PropTypes from 'prop-types';
+import { useNavigate,useLocation } from 'react-router-dom';
 import CommentIcon from "../../../assets/comment.svg";
 
-export const FeedbackItem = ({title,detail,category,comments,vote}) => {
+export const FeedbackItem = ({id,title,detail,category,comments,vote}) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleNavigation = () =>{
+    if(location.pathname === '/'){
+      navigate(`/feedback-detail/${id}`);
+    }
+  }
+
   return (
-    <li className="feedback-item primary-border-radius">
-        
+    <li className="feedback-item primary-border-radius" onClick={handleNavigation}>
+ 
         <div className="feedback-item-header">
            <h2 className="feedback-item-title">{title}</h2> 
            <p className="feedback-item-description">{detail}</p>
@@ -21,7 +31,7 @@ export const FeedbackItem = ({title,detail,category,comments,vote}) => {
         <img src = {CommentIcon} alt=""/>
        <p> {comments.length}</p> 
        </div>
-
+   
     </li>
   )
 }
