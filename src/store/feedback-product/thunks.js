@@ -1,7 +1,10 @@
 
-import { collection, deleteDoc, doc, setDoc,getFirestore  } from "firebase/firestore/lite";
+import { collection, deleteDoc, doc, setDoc,getFirestore,} from "firebase/firestore/lite";
+import {updateDoc } from 'firebase/firestore';
+import { FirebaseDB } from "../../firebase/config";
 import { loadFeedbacks } from "../../helpers/loadsFeedback";
-import { addNewFeedback, errorMessage, getFeedbacks, setSaving } from "./feedbackSlice";
+import { addNewFeedback, errorMessage, getFeedbacks, setSaving, updateFeedback } from "./feedbackSlice";
+import { getFeedback } from "../../helpers/getFeedback";
 
 export const startLoadingFeedbacks = () =>{
   
@@ -40,5 +43,45 @@ export const startSavingFeedback = ({feedbackTitle,feedbackComment,category}) =>
         console.log(error.errorMessage);
       }
        
+    }
+}
+
+export const startPostingComment = ({feedbackId,post,commentId}) =>{
+  
+  return async (dispatch,getState) =>{
+      
+    try{
+        dispatch(setSaving());
+        const {feedbacks} = getState().feedback;
+        const {displayName,photoURL,email} = getState().auth;
+      
+        const feedbackRef = doc(FirebaseDB,`feedback/${feedbackId}`);
+        const feedback = getFeedback(feedbacks,feedbackId);
+
+        const fireStoreComment = {
+          id:commentId,
+          userName:displayName,
+          userEmail:email,
+          photoURL,
+          comment: post
+        }
+        const newFeedback = {
+          id:feedback.id,
+          status:feedback.status,
+          title:feedback.title,
+          detail:feedback.detail,
+          vote:feedback.vote,
+          category:feedback.category,
+          comments:[...feedback.comments,fireStoreComment]
+        }
+
+        await setDoc(feedbackRef,{comments:[...feedback.comments,fireStoreComment]},{merge:true});
+        dispatch(updateFeedback({feedbackId,newFeedback}));
+        
+     
+      }
+      catch(err){
+        console.log(err);
+      }
     }
 }

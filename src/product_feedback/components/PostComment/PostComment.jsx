@@ -1,5 +1,9 @@
 import {useState,useRef} from 'react';
+import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { startPostingComment } from '../../../store/feedback-product/thunks';
 import {UseForm} from '../../../hooks/UseForm';
+import { v4 as uuidv4 } from 'uuid';
 
 const formData = {postComment:''};
 const requiredFields = {
@@ -7,8 +11,10 @@ const requiredFields = {
 }
 
 export const PostComment = () => {
+  const dispatch = useDispatch();
+  const params = useParams();
   const {postComment,handleChange} = UseForm(formData,requiredFields);
-   const [characterCount, setCharacterCount] = useState(0);
+  const [characterCount, setCharacterCount] = useState(0);
   const textAreaRef = useRef();
 
    const getCharacterCount = () =>{
@@ -22,12 +28,15 @@ export const PostComment = () => {
         setCharacterCount(charactersLeft);
         return;
       }
-
 }
+ const handleSubmit = (event) =>{
+    event.preventDefault();
+    dispatch(startPostingComment({feedbackId:params.id,post:postComment,commentId:uuidv4()}))
+ }
     return (
     <div className="post-comment primary-border-radius">
         <h2 className="capitalize post-comment-main-heading">add comment</h2>
-        <form>
+        <form onSubmit={handleSubmit}>
             <textarea 
             className="post-comment-input"
             name="postComment"
@@ -37,6 +46,7 @@ export const PostComment = () => {
             onKeyUp = {handleCharacterCount}
             maxLength="250"
             ref = {textAreaRef}
+            required
             >
          </textarea>
             
