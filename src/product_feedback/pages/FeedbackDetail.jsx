@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { getFeedback } from '../../helpers/getFeedback';
 import { FeedbackItem } from '../components/FeedbackList/FeedbackItem';
 import { PostComment } from '../components/PostComment/PostComment';
+import { CommentList } from '../components/comments/CommentList';
 
 export const FeedbackDetail = () => {
   const {id} = useParams();
@@ -13,7 +14,7 @@ export const FeedbackDetail = () => {
   const [feedback,setFeedback] = useState();
 
   useEffect(()=>{
-     setFeedback(getFeedback(feedbacks,id)); 
+   setFeedback(getFeedback(feedbacks,id)); 
   },[feedbacks])
  
 
@@ -25,6 +26,12 @@ export const FeedbackDetail = () => {
     </header>
 
      {feedback && <FeedbackItem {...feedback}/>}
+
+     {/* here goes comments if there are  */}
+     
+    {feedback?.comments.length > 0 && <CommentList comments = {feedback.comments}/>}
+    
+
       <PostComment/>
   
     </section>

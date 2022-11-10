@@ -1,6 +1,5 @@
 
-import { collection, deleteDoc, doc, setDoc,getFirestore,} from "firebase/firestore/lite";
-import {updateDoc } from 'firebase/firestore';
+import { collection, deleteDoc, doc, setDoc,getFirestore,addDoc} from "firebase/firestore/lite";
 import { FirebaseDB } from "../../firebase/config";
 import { loadFeedbacks } from "../../helpers/loadsFeedback";
 import { addNewFeedback, errorMessage, getFeedbacks, setSaving, updateFeedback } from "./feedbackSlice";
@@ -25,7 +24,7 @@ export const startSavingFeedback = ({feedbackTitle,feedbackComment,category}) =>
       try{
           dispatch(setSaving());
           const db = getFirestore();
-         const newDoc = doc(collection(db,`feedback`));
+          const dbRef = collection(db,`feedback`);
 
       const feedbackToFirestore = {
         title:feedbackTitle,
@@ -35,8 +34,10 @@ export const startSavingFeedback = ({feedbackTitle,feedbackComment,category}) =>
         comments:[],
        status:'Planned'
       }
-    
-       await setDoc(newDoc,feedbackToFirestore,{merge:true});
+
+      const resp = await addDoc(dbRef,feedbackToFirestore);
+      feedbackToFirestore.id = resp.id
+  
        dispatch(addNewFeedback(feedbackToFirestore));
       }
       catch(error){
@@ -46,39 +47,39 @@ export const startSavingFeedback = ({feedbackTitle,feedbackComment,category}) =>
     }
 }
 
-export const startPostingComment = ({feedbackId,post,commentId}) =>{
-  
+export const startPostingComment = ({feedbackId,commentToPost,commentId}) =>{
+  console.log(feedbackId)
   return async (dispatch,getState) =>{
-      
+     
     try{
         dispatch(setSaving());
         const {feedbacks} = getState().feedback;
         const {displayName,photoURL,email} = getState().auth;
-      
-        const feedbackRef = doc(FirebaseDB,`feedback/${feedbackId}`);
-        const feedback = getFeedback(feedbacks,feedbackId);
-
-        const fireStoreComment = {
+       
+        const feedbackReference = doc(FirebaseDB,`feedback/${feedbackId}`);
+        const feedbackSelected = getFeedback(feedbacks,feedbackId);
+    
+        const commentToPostOnDatabase = {
           id:commentId,
           userName:displayName,
           userEmail:email,
           photoURL,
-          comment: post
-        }
-        const newFeedback = {
-          id:feedback.id,
-          status:feedback.status,
-          title:feedback.title,
-          detail:feedback.detail,
-          vote:feedback.vote,
-          category:feedback.category,
-          comments:[...feedback.comments,fireStoreComment]
+          comment: commentToPost
         }
 
-        await setDoc(feedbackRef,{comments:[...feedback.comments,fireStoreComment]},{merge:true});
-        dispatch(updateFeedback({feedbackId,newFeedback}));
-        
-     
+        const updatedFeedbackSelected = {
+          id:feedbackSelected.id,
+          status:feedbackSelected.status,
+          title:feedbackSelected.title,
+          detail:feedbackSelected.detail,
+          vote:feedbackSelected.vote,
+          category:feedbackSelected.category,
+          comments:[...feedbackSelected.comments,commentToPostOnDatabase]
+        }
+
+        await setDoc(feedbackReference,{comments:[...feedbackSelected.comments,commentToPostOnDatabase]},{merge:true});
+        dispatch(updateFeedback({feedbackId,updatedFeedbackSelected}));
+      
       }
       catch(err){
         console.log(err);

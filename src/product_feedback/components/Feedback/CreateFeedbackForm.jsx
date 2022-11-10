@@ -1,15 +1,13 @@
 
-import { useRef,useEffect } from "react";
+import { useRef} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { UseForm } from "../../../hooks/UseForm";
+import { UseToast} from '../../../hooks/UseToast';
 import { DropdownFilterWrapper } from "../DropdownFilterWrapper/DropdownFilterWrapper";
 import { Error } from "../../../error/Error";
 import { isFound } from "../../../helpers/isFound";
 import { startSavingFeedback} from "../../../store/feedback-product/thunks";
-import { resetFeedbackMessage } from "../../../store/feedback-product/feedbackSlice";
 import  iconFeedback from '../../../assets/icon-new-feedback.svg';
-import Swal from 'sweetalert2';
-import 'sweetalert2/dist/sweetalert2.css';
 
 const formData = {feedbackTitle:'',feedbackComment:''};
 const requiredFields = {
@@ -22,6 +20,7 @@ export const CreateFeedbackForm = () => {
   const {feedbackTitle,feedbackComment,handleChange,validateForm,errors,resetForm} = UseForm(formData,requiredFields);
   const dispatch = useDispatch()
   const optionFilterRef = useRef();
+  UseToast(feedbackMessage,resetForm);
 
    const handleSubmit = (e) =>{
     e.preventDefault();
@@ -29,20 +28,6 @@ export const CreateFeedbackForm = () => {
       dispatch(startSavingFeedback({feedbackTitle,feedbackComment,category:optionFilterRef.current}))
     }
   }
-
-  useEffect(()=>{
-    
-    if(feedbackMessage.length > 0){
-      Swal.fire(
-        'Good Job',
-       `${feedbackMessage}!`,
-        'success'
-      )
-      dispatch(resetFeedbackMessage())
-      resetForm();
-    }
-   
-  },[feedbackMessage])
 
   return (
     <form className='feedback-form primary-border-radius' onSubmit={handleSubmit}>

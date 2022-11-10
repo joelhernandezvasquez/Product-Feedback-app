@@ -1,8 +1,10 @@
+
 import {useState,useRef} from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { startPostingComment } from '../../../store/feedback-product/thunks';
 import {UseForm} from '../../../hooks/UseForm';
+import { UseToast} from '../../../hooks/UseToast';
 import { v4 as uuidv4 } from 'uuid';
 
 const formData = {postComment:''};
@@ -11,28 +13,31 @@ const requiredFields = {
 }
 
 export const PostComment = () => {
+  const {feedbackMessage} = useSelector((state)=> state.feedback);
   const dispatch = useDispatch();
   const params = useParams();
-  const {postComment,handleChange} = UseForm(formData,requiredFields);
+  const {postComment,handleChange,resetForm} = UseForm(formData,requiredFields);
   const [characterCount, setCharacterCount] = useState(0);
   const textAreaRef = useRef();
+   UseToast(feedbackMessage,resetForm);
 
    const getCharacterCount = () =>{
-    return textAreaRef.current.value.length <= 250;
+    return textAreaRef.current.value.length;
    }
 
    const handleCharacterCount =() =>{
-      const charactersLeft = textAreaRef.current.value.length;
+      const charactersLeft = getCharacterCount();
    
-      if(getCharacterCount()){
+      if(charactersLeft<=250){
         setCharacterCount(charactersLeft);
         return;
       }
 }
  const handleSubmit = (event) =>{
     event.preventDefault();
-    dispatch(startPostingComment({feedbackId:params.id,post:postComment,commentId:uuidv4()}))
+    dispatch(startPostingComment({feedbackId:params.id,commentToPost:postComment,commentId:uuidv4()}))
  }
+
     return (
     <div className="post-comment primary-border-radius">
         <h2 className="capitalize post-comment-main-heading">add comment</h2>

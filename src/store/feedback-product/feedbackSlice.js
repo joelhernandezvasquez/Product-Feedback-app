@@ -21,10 +21,10 @@ export const feedbackSlice = createSlice({
          state.feedbackMessage = 'Feedback has been saved'
        },
        updateFeedback:(state,{payload})=>{
-      
          state.isSaving = false,
-        state.feedbacks = state.feedbacks.map((feedback)=> feedback.id === payload.feedbackId ? payload.newFeedback:feedback);
-       },
+        state.feedbacks = state.feedbacks.map((feedback)=> feedback.id === payload.feedbackId ? payload.updatedFeedbackSelected:feedback);
+        state.feedbackMessage = 'Comment has been saved'
+      },
 
        setSaving:(state) =>{
         state.isSaving = true;
