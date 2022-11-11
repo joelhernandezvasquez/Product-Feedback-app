@@ -59,8 +59,13 @@ button.btn-image{
     &:hover{
         background:transparent;
     }
-   //border:1px solid red;
 }
+.btn-reply{
+    color:var(--main-clr-blue);
+    background:none;
+    font-size: var(--smallest-font);
+    font-weight: 600;
+} 
 
 
 
