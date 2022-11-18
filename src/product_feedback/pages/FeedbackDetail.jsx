@@ -22,12 +22,11 @@ export const FeedbackDetail = () => {
     <section className="max-width-wrapper feedback-detail-container">
      <header className='d-flex d-flex-space-between'>
        <ReturnPreviousPage/>
-       <Link to={"/"}> <button className='btn-blue btn-edit-feedback capitalize'>edit feedback</button>  </Link>
+       <Link to={`/feedback-edit/${id}`}> <button className='btn-blue btn-edit-feedback capitalize'>edit feedback</button>  </Link>
     </header>
 
      {feedback && <FeedbackItem {...feedback}/>}
 
-     {/* here goes comments if there are  */}
      
     {feedback?.comments.length > 0 && <CommentList comments = {feedback.comments}/>}
     
