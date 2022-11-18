@@ -139,6 +139,58 @@ cursor: pointer;
   }
 }
 
+.feedback-form-edit-btn-containers{
+   display:flex;
+   flex-direction: column;
+    margin-top:30px;
+    padding-bottom:20px;
+
+    @media(min-width: $tablet-breakpoint){
+       flex-direction: row; 
+       justify-content: space-between;
+
+
+      div{
+        order:2;
+      }
+     .btn-red{
+         order:1;
+     }
+ 
+    }
+}
+.feedback-form-edit-btn-containers div {
+    display:flex;
+    flex-direction: column;
+
+    @media(min-width: $tablet-breakpoint){
+        flex:1;
+        flex-direction: row;
+        justify-content: flex-end;
+        gap:16px;
+
+        .btn-black{
+            order:1;
+        }
+
+        & button:nth-child(1){
+            order:2;
+        }
+        
+        button{
+            min-width: 120px;  
+        }
+    }
+     
+}
+.feedback-form-edit-btn-containers button{
+    padding:10px 0;
+    margin-bottom: 16px;
+    @media(min-width: $tablet-breakpoint){
+        flex-basis: 120px;
+    }
+}
+
 .feedback-detail-container{
     margin-top:34px;
 }

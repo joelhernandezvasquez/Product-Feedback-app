@@ -66,5 +66,18 @@ export const dropdownFilterOptions = [
     option:'Least Comments'
   },
 ]
+export const statusCategory = [{
+  id:0,
+  option:'Planned'
+},
+{
+  id:1,
+  option:'In-Progress'
+},
+{
+  id:2,
+  option:'Live'
+}
+]
 
 export const FEEDBACK_DETAIL_ROUTE = '/feedback-detail';
