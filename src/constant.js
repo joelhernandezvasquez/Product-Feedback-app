@@ -66,3 +66,5 @@ export const dropdownFilterOptions = [
     option:'Least Comments'
   },
 ]
+
+export const FEEDBACK_DETAIL_ROUTE = '/feedback-detail';

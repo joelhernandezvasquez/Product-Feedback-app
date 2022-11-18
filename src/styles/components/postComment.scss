@@ -104,5 +104,41 @@
 
     &:hover{
         background:none;
+        text-decoration: underline;
     }
+}
+
+.post-reply-form{
+    grid-column: 1/4;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    gap:5px;
+    margin-bottom:32px;
+
+    @media(min-width: $tablet-breakpoint){
+        grid-column: 2/4;
+    }
+
+}
+.post-reply-form textarea{
+    border:none;
+    border-radius: 5px;
+    background:var(--main-clr-opaque-pink);
+    flex-grow: 1;
+    min-height: 70px;
+}
+
+.btn-post-reply{
+ flex-shrink: 2;
+ padding:10px;
+ font-size:var(--smallest-font);
+
+}
+.reply-item{
+ 
+}
+.reply-item .btn-reply{
+//    border:1px solid red;
+//    justify-self: end;
 }
