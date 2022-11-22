@@ -4,6 +4,7 @@ import { FirebaseDB } from "../../firebase/config";
 import { loadFeedbacks } from "../../helpers/loadsFeedback";
 import { addNewFeedback, errorMessage, getFeedbacks, setSaving, updateFeedback } from "./feedbackSlice";
 import { getFeedback } from "../../helpers/getFeedback";
+import { async } from "@firebase/util";
 
 
 export const startLoadingFeedbacks = () =>{
@@ -160,4 +161,32 @@ export const startPostingVotes = ({feedbackId}) =>{
         console.log(err);
        }
     }
+}
+
+export const startEditingFeedback = ({feedbackId,title,category,status,detail}) =>{
+   
+  return async (dispatch,getState) =>{
+    try{
+      dispatch(setSaving());
+      const {feedbacks} = getState().feedback;
+      const feedbackSelected = getFeedback(feedbacks,feedbackId);
+      const feedbackReference = doc(FirebaseDB,`feedback/${feedbackId}`);
+      
+      const updatedFeedbackSelected = {
+        ...feedbackSelected,
+        title,
+        category,
+        status,
+        detail
+      }
+
+      await setDoc(feedbackReference,{title,category,status,detail},{merge:true});
+      dispatch(updateFeedback({feedbackId,updatedFeedbackSelected,message:`${title} feedback has been updated`}))
+
+    }
+    catch(err){
+      console.log(err);
+    }
+  }
+   
 }

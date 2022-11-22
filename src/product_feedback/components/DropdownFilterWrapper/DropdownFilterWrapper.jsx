@@ -1,12 +1,12 @@
 import { useState ,useEffect} from "react";
 import { UseToogle } from "../../../hooks/UseToogle";
 import { DropdownFilter } from "../dropdownFilter/DropdownFilter";
-import { categoryDropdown } from "../../../constant";
 
-export const DropdownFilterWrapper = ({optionFilterRef}) => {
+
+export const DropdownFilterWrapper = ({optionFilterRef,statusCategory,menuOptions}) => {
    
     const {isToggle,toggle} = UseToogle(false);
-    const [filterOption,setFilterOption] = useState(categoryDropdown[4].option);
+    const [filterOption,setFilterOption] = useState(statusCategory);
    
     const handleFilterOption = (option) =>{
         setFilterOption(option);
@@ -28,7 +28,7 @@ export const DropdownFilterWrapper = ({optionFilterRef}) => {
         </svg>
       </div>
       <DropdownFilter 
-       options = {categoryDropdown}
+       options = {menuOptions}
        filterOption={filterOption} 
        handleFilterOption={handleFilterOption}
        dropdownBodyCSSClass = {`dropdown-feedback primary-border-radius ${isToggle && 'open-drodpdown'} `}

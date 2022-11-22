@@ -53,7 +53,7 @@ export const CreateFeedbackForm = () => {
         <label htmlFor="feedback-category"> Category <p>Choose a category for your feedback</p>
       </label>
 
-      <DropdownFilterWrapper optionFilterRef = {optionFilterRef}/>
+      <DropdownFilterWrapper optionFilterRef = {optionFilterRef} statusCategory={'Feature'}/>
 
       </div>
 

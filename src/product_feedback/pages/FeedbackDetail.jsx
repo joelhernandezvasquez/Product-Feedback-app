@@ -1,4 +1,4 @@
-import { useEffect,useState} from 'react';
+import { UseFeedback } from '../../hooks/UseFeedback';
 import {ReturnPreviousPage} from '../components/ReturnPreviousPage/ReturnPreviousPage';
 import { Link } from 'react-router-dom';
 import { useParams } from "react-router-dom"
@@ -10,13 +10,7 @@ import { CommentList } from '../components/comments/CommentList';
 
 export const FeedbackDetail = () => {
   const {id} = useParams();
-  const {feedbacks} = useSelector((state)=> state.feedback);
-  const [feedback,setFeedback] = useState();
-
-  useEffect(()=>{
-   setFeedback(getFeedback(feedbacks,id)); 
-  },[feedbacks])
- 
+  const {feedback} = UseFeedback(id);
 
   return (
     <section className="max-width-wrapper feedback-detail-container">

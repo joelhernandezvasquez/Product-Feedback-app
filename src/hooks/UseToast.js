@@ -15,6 +15,7 @@ export const UseToast = (message,resetForm) => {
               'success'
             )
             dispatch(resetFeedbackMessage())
+            if(resetForm)
              resetForm();
         }
     },[message])
