@@ -6,6 +6,7 @@ import { UseToast} from '../../../hooks/UseToast';
 import { DropdownFilterWrapper } from "../DropdownFilterWrapper/DropdownFilterWrapper";
 import { Error } from "../../../error/Error";
 import { isFound } from "../../../helpers/isFound";
+import { categoryDropdown } from "../../../constant";
 import { startSavingFeedback} from "../../../store/feedback-product/thunks";
 import  iconFeedback from '../../../assets/icon-new-feedback.svg';
 
@@ -53,7 +54,11 @@ export const CreateFeedbackForm = () => {
         <label htmlFor="feedback-category"> Category <p>Choose a category for your feedback</p>
       </label>
 
-      <DropdownFilterWrapper optionFilterRef = {optionFilterRef} statusCategory={'Feature'}/>
+      <DropdownFilterWrapper 
+      optionFilterRef = {optionFilterRef} 
+      statusCategory={'Feature'}
+      menuOptions = {categoryDropdown}
+      />
 
       </div>
 
