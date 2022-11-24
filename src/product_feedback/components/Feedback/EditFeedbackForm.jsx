@@ -1,13 +1,14 @@
 import { useRef,useState,useEffect} from "react";
-import { useParams } from "react-router-dom";
+import { useParams,useNavigate, Navigate} from "react-router-dom";
 import { useSelector,useDispatch } from 'react-redux';
 import { getFeedback } from '../../../helpers/getFeedback';
 import { DropdownFilterWrapper } from "../DropdownFilterWrapper/DropdownFilterWrapper";
 import  iconEditFeedback from '../../../assets/icon-edit-feedback.svg';
-import { DropdownFilter } from "../dropdownFilter/DropdownFilter";
 import { statusCategory,categoryDropdown } from "../../../constant";
-import { startEditingFeedback } from "../../../store/feedback-product/thunks";
+import { startDeletingFeedback, startEditingFeedback } from "../../../store/feedback-product/thunks";
 import { UseToast } from "../../../hooks/UseToast";
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.css';
 
 export const EditFeedbackForm = () => {
     const {id} = useParams();
@@ -17,12 +18,13 @@ export const EditFeedbackForm = () => {
     const [feedbackValues,setFeedbackValues] = useState();
     const dispatch = useDispatch();
     UseToast(feedbackMessage);
+    const navigate = useNavigate();
 
     useEffect(() => {
         setFeedbackValues(getFeedback(feedbacks,id));
     },[feedbacks])
 
-    
+  
     const handleChange = ({target}) =>{
       setFeedbackValues({...feedbackValues,[target.name]:target.value})
     }
@@ -31,6 +33,29 @@ export const EditFeedbackForm = () => {
        event.preventDefault();
         dispatch(startEditingFeedback(
           {feedbackId:id,title:feedbackValues.title,category:optionFilterRef.current,status:statusFilterRef.current,detail:feedbackValues.detail}));
+    }
+   
+
+    const deleteFeedback = (e) =>{
+     e.preventDefault();
+      Swal.fire({
+        title: 'Are you sure you want to delete the feedback?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#D73737',
+        cancelButtonColor: '#656EA3',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result)=>{
+        if(result.isConfirmed){
+          dispatch(startDeletingFeedback(id));
+        }
+      })
+      
+    }
+
+    const cancelChanges = () =>{
+      navigate("/");
     }
     
   return (
@@ -95,11 +120,11 @@ export const EditFeedbackForm = () => {
 
       <div className="feedback-form-edit-btn-containers">
         <div>
-        <button type="submit" className="capitalize" onClick={saveChanges}> save changes</button>
-        <button className="capitalize btn-black"> cancel</button>
+        <button className="capitalize" onClick={saveChanges}> save changes</button>
+        <button className="capitalize btn-black" onClick={cancelChanges}> cancel</button>
         </div>
       
-        <button className="capitalize btn-red"> delete </button>
+        <button className="capitalize btn-red" onClick={deleteFeedback}> delete </button>
       </div>
     </form>
   )

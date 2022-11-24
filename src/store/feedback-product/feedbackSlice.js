@@ -26,6 +26,11 @@ export const feedbackSlice = createSlice({
         state.feedbackMessage = `${payload.message}`
       },
 
+      deleteFeedback:(state,{payload})=>{
+        state.feedbacks = state.feedbacks.filter((feedback)=> feedback.id !== payload.feedbackId)
+        state.feedbackMessage = `${payload.message}`
+      },
+
        setSaving:(state) =>{
         state.isSaving = true;
         state.feedbackMessage = '';
@@ -56,4 +61,5 @@ export const
   setSaving,
   addNewFeedback,
   updateFeedback,
+  deleteFeedback,
   resetFeedbackMessage} = feedbackSlice.actions;

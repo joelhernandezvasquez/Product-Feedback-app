@@ -2,7 +2,7 @@
 import { collection, deleteDoc, doc, setDoc,getFirestore,addDoc} from "firebase/firestore/lite";
 import { FirebaseDB } from "../../firebase/config";
 import { loadFeedbacks } from "../../helpers/loadsFeedback";
-import { addNewFeedback, errorMessage, getFeedbacks, setSaving, updateFeedback } from "./feedbackSlice";
+import { addNewFeedback, deleteFeedback, errorMessage, getFeedbacks, setSaving, updateFeedback } from "./feedbackSlice";
 import { getFeedback } from "../../helpers/getFeedback";
 import { async } from "@firebase/util";
 
@@ -189,4 +189,18 @@ export const startEditingFeedback = ({feedbackId,title,category,status,detail}) 
     }
   }
    
+}
+export const startDeletingFeedback = (feedbackId) =>{
+
+  return async(dispatch)=>{
+  try{
+     const feedbackReference = doc(FirebaseDB,`feedback/${feedbackId}`);
+     await deleteDoc(feedbackReference);
+     dispatch(deleteFeedback({feedbackId,message:'Feedback has been deleted.'}));
+  }
+  catch(err){
+   console.log(err);
+  }
+  }
+
 }
