@@ -28,7 +28,7 @@ export const feedbackSlice = createSlice({
 
       deleteFeedback:(state,{payload})=>{
         state.feedbacks = state.feedbacks.filter((feedback)=> feedback.id !== payload.feedbackId)
-        state.feedbackMessage = `${payload.message}`
+     
       },
 
        setSaving:(state) =>{

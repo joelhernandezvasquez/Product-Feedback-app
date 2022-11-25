@@ -6,8 +6,6 @@ export const EditFeedback = () => {
     <section className="feedback-wrapper">
      <ReturnPreviousPage/>
      <EditFeedbackForm/>
-  
-   
    </section>
   )
 }

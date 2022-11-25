@@ -196,7 +196,7 @@ export const startDeletingFeedback = (feedbackId) =>{
   try{
      const feedbackReference = doc(FirebaseDB,`feedback/${feedbackId}`);
      await deleteDoc(feedbackReference);
-     dispatch(deleteFeedback({feedbackId,message:'Feedback has been deleted.'}));
+     dispatch(deleteFeedback({feedbackId}));
   }
   catch(err){
    console.log(err);

@@ -13,8 +13,13 @@ export const UseFeedback = (idParam = 0) => {
         setFeedback(getFeedback(feedbacks,idParam)); 
        },[feedbacks])
      
+       const handleChange = ({target}) =>{
+        setFeedback({...feedback,[target.name]:target.value})
+      }
+  
     return {
         feedback,
-        ...feedback
+        ...feedback,
+        handleChange
     }
 }
