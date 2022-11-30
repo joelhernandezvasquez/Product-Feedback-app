@@ -80,4 +80,10 @@ export const statusCategory = [{
 }
 ]
 
+export const categoryPrompt = [
+  {id:0,prompt:'Ideas prioritized for research'},
+  {id:1,prompt:'Features currently being developed'},
+  {id:2,prompt:'Released features'}
+]
+
 export const FEEDBACK_DETAIL_ROUTE = '/feedback-detail';

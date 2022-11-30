@@ -1,7 +1,12 @@
 
+import { FilterRoadmapItems } from '../components/RoadmapFeedback/FilterRoadmapItems';
+import { RoadmapHeader } from '../components/RoadmapFeedback/RoadmapHeader';
 
 export const RoadmapPage = () => {
   return (
-    <div>RoadmapPage</div>
+    <section className='roadmap-wrapper'>
+     <RoadmapHeader/>
+     <FilterRoadmapItems/>
+    </section>
   )
 }

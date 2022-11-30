@@ -1,0 +1,87 @@
+
+.roadmap-wrapper{
+    max-width: 1110px;
+    margin:0 auto;
+    padding:0 24px;
+}
+
+.roadmap-header{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+  background:var(--main-clr-dark-black);
+  color:var(--main-clr-white);
+   padding-top:26px;
+   padding-bottom: 26px;
+  margin-left:-24px;
+   margin-right:-24px;
+   padding-left:24px;
+   padding-right:24px;
+}
+.roadmap-header h1{
+    font-size:1.125rem;
+}
+.roadmap-header a{
+    color:var(--main-clr-white);   
+}
+
+.filter-roadmap-mobile{
+    border-bottom: 1px solid  rgba(#8C92B3,0.25);
+    margin-left:-24px;
+    margin-right:-24px;
+}
+
+.roadmap-filter-menu-mobile{
+    display:flex;
+    justify-content: space-between;
+    margin-top:20px;
+    margin-bottom: 18px;
+    padding-left:24px;
+    padding-right: 24px;
+   
+}
+.roadmap-filter-menu-mobile li{
+    font-size: var(--smallest-font);
+    font-weight: 700;
+    color:rgba(#3A4374,0.4);
+    position:relative;
+}
+.roadmap-filter-menu-mobile li:after{
+    display:none;
+    content:'';
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:-18px;
+    width:100%;
+    height:4px;
+}
+
+.roadmap-filter-menu-mobile li.active{
+    color:var(--secondary-clr-black);
+}
+.roadmap-filter-menu-mobile li.active:after{
+    display:block;
+}
+
+.roadmap-filter-menu-mobile li:nth-child(1):after{
+    background:#F49F85;
+}
+.roadmap-filter-menu-mobile li:nth-child(2):after{
+    background:#AD1FEA;
+}
+
+.roadmap-filter-menu-mobile li:last-child:after{
+    background:#62BCFA;
+}
+
+.roadmap-filter-heading{
+    font-size:1.125rem;
+    margin-top:24px;
+}
+.roadmap-filter-sub-heading{
+    font-size:var(--smallest-font);
+    color: var(--main-clr-gray);
+}
+
+

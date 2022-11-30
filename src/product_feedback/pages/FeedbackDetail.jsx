@@ -2,8 +2,6 @@ import { UseFeedback } from '../../hooks/UseFeedback';
 import {ReturnPreviousPage} from '../components/ReturnPreviousPage/ReturnPreviousPage';
 import { Link } from 'react-router-dom';
 import { useParams } from "react-router-dom"
-import { useSelector } from 'react-redux';
-import { getFeedback } from '../../helpers/getFeedback';
 import { FeedbackItem } from '../components/FeedbackList/FeedbackItem';
 import { PostComment } from '../components/PostComment/PostComment';
 import { CommentList } from '../components/comments/CommentList';

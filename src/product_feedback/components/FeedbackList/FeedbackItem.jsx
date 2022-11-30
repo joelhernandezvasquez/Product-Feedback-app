@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useNavigate,useLocation } from 'react-router-dom';
-import CommentIcon from "../../../assets/comment.svg";
+import { FeedbackCommentItem } from '../FeedbackCommentItem/FeedbackCommentItem';
 import { FeedbackVote } from '../FeedbackVote/FeedbackVote';
 
 export const FeedbackItem = ({id,title,detail,category,comments,vote}) => {
@@ -23,11 +23,7 @@ export const FeedbackItem = ({id,title,detail,category,comments,vote}) => {
         </div>
 
         <FeedbackVote vote={vote}/>
-       
-       <div className="feedback-item-comments-amount d-flex d-flex-align-center">
-        <img src = {CommentIcon} alt=""/>
-       <p> {comments.length}</p> 
-       </div>
+        <FeedbackCommentItem comments={comments}/>
    
     </li>
   )
