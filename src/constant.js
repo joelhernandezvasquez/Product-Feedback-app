@@ -87,3 +87,6 @@ export const categoryPrompt = [
 ]
 
 export const FEEDBACK_DETAIL_ROUTE = '/feedback-detail';
+export const STATUS_PLANNED = 'Planned';
+export const STATUS_INPROGRESS = 'In-Progress';
+export const STATUS_LIVE = 'Live';

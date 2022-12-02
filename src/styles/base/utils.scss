@@ -82,6 +82,9 @@ $desktop-breakpoint:1200px;
     font-size:var(--smallest-font);
     text-decoration: none;
 }
+.router-link:hover{
+    color:inherit;
+}
 .icon-arrow-left{
   margin-right:16px;
 }

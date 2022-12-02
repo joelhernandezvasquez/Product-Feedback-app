@@ -6,7 +6,7 @@ import { getFeedbacksByCategory } from "../../../helpers/getFeedbacksByCategory"
 import { setRoadmapItems } from "../../../helpers/setRoadmapItems";
 import { statusCategory,categoryPrompt } from "../../../constant";
 
-export const FilterRoadmapItems = () => {
+export const FilterMobileRoadmapItems = () => {
   const {feedbacks} = useSelector((state)=> state.feedback);
   const {planned,inProgress,live} = setRoadmapItems(feedbacks);
   const [activeRoadmapItem,setActiveRoadmapItem] = useState({
@@ -29,7 +29,7 @@ export const FilterRoadmapItems = () => {
   }
 
   return (
-    <section>
+    <section className="filter-mobile-roadmapItems">
       <RoadmapFilterMobileMenu
        activeRoadmapId={activeRoadmapItem.id}
        toogleRoadmapItem = {toogleRoadmapItem}
