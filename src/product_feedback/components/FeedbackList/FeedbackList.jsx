@@ -5,6 +5,7 @@ import { EmptyComments } from "../../views/EmptyComments";
 export const FeedbackList = () => {
   const {feedbacks,feedbackFiltered} = useSelector((state) => state.feedback);
 
+  
   return (
     <section className="max-width-wrapper feedback-list">
       { feedbacks?.length > 0 ? (
