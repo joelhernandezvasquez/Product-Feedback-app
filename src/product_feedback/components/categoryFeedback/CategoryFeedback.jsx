@@ -2,11 +2,12 @@ import { useEffect } from "react";
 import { useSelector,useDispatch } from "react-redux";
 import PropTypes from 'prop-types';
 import {setCategory,filterFeedback} from '../../../store/feedback-product/feedbackSlice';
+import {getFeedbackByFilterOption } from '../../../helpers/getFeedbackByComments';
 import { categoryOptions } from "../../../constant";
 
 export const CategoryFeedback = ({closeMenu}) => {
   
- const {currentCategory,feedbacks} = useSelector((state)=> state.feedback);
+ const {currentCategory,currentFilterOption,feedbacks} = useSelector((state)=> state.feedback);
 
  const dispatch = useDispatch();
 
@@ -17,13 +18,15 @@ export const CategoryFeedback = ({closeMenu}) => {
   }
   
   useEffect(()=>{
-  
+
     const filterFeedbacks = () =>{
      if(currentCategory === 'All'){
-      dispatch(filterFeedback(feedbacks)); 
+       const feedbackSorted = getFeedbackByFilterOption(feedbacks,currentFilterOption);
+       dispatch(filterFeedback(feedbackSorted)); 
        return;
      }
-     const dataFiltered = feedbacks.filter((feedback) => feedback.category === currentCategory);
+
+     const dataFiltered = getFeedbackByFilterOption(feedbacks.filter((feedback) => feedback.category === currentCategory),currentFilterOption);
      dispatch(filterFeedback(dataFiltered));
    }
     filterFeedbacks();

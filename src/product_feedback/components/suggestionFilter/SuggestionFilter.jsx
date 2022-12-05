@@ -1,23 +1,42 @@
+import { useState,useCallback,useEffect} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {Link} from 'react-router-dom'; 
-import { useState,useCallback} from 'react';
 import { UseToogle } from '../../../hooks/UseToogle';
+import { filterFeedback,sortFilterFeedback } from '../../../store/feedback-product/feedbackSlice';
 import { DropdownFilter } from '../dropdownFilter/DropdownFilter';
 import { dropdownFilterOptions } from '../../../constant';
 import { ShowSuggestionQuantity } from '../../views/ShowSuggestionQuantity';
+import {getFeedbackByFilterOption } from '../../../helpers/getFeedbackByComments';
+
 
 export const SuggestionFilter = () => {
   
   const{isToggle,toggle} = UseToogle(false);
   const [filterOption,setFilterOption] = useState(dropdownFilterOptions[0].option);
+  const {feedbackFiltered,feedbacks,currentCategory} = useSelector((state)=> state.feedback);
+  const dispatch = useDispatch();
 
   const handleFilterOption = useCallback((option) =>{
+    dispatch(sortFilterFeedback(option));
     setFilterOption(option);
     toggle();
   },[isToggle])
+  
+  useEffect(()=>{
+ 
+  function filterFeedbacksByComments(){
+     if(feedbackFiltered?.length > 0){
+      const dataFiltered = getFeedbackByFilterOption(feedbackFiltered,filterOption);
+       dispatch(filterFeedback(dataFiltered));
+     }
+   }
+
+  filterFeedbacksByComments();
+  },[filterOption,feedbacks])
  
   return (
     <section className="max-width-wrapper">
-       
+      
       <div className='suggestion-filter d-flex d-flex-space-between'>
        
        <ShowSuggestionQuantity/>

@@ -5,6 +5,7 @@ export const feedbackSlice = createSlice({
     initialState: {
        isSaving:false,
        currentCategory:'All',
+       currentFilterOption:'Most Upvotes',
        feedbacks:[],
        feedbackFiltered:[],
        feedbackMessage:'',
@@ -41,6 +42,9 @@ export const feedbackSlice = createSlice({
        setCategory:(state,{payload}) =>{
          state.currentCategory = payload
        },
+       sortFilterFeedback:(state,{payload}) =>{
+         state.currentFilterOption = payload;
+       },
        errorMessage:(state,{payload}) =>{
          state.isSaving = false,
          state.errorMessage = payload
@@ -62,4 +66,5 @@ export const
   addNewFeedback,
   updateFeedback,
   deleteFeedback,
+  sortFilterFeedback,
   resetFeedbackMessage} = feedbackSlice.actions;

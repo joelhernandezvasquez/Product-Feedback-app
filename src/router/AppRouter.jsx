@@ -10,7 +10,7 @@ export const AppRouter = () => {
   const status = UseAuth();
 
   if(status ==='checking') {
-    return <h1>Loading</h1>
+    return <h1>Loading...</h1>
   }
  
 

@@ -90,3 +90,7 @@ export const FEEDBACK_DETAIL_ROUTE = '/feedback-detail';
 export const STATUS_PLANNED = 'Planned';
 export const STATUS_INPROGRESS = 'In-Progress';
 export const STATUS_LIVE = 'Live';
+export const MOST_UPVOTES = 'Most Upvotes';
+export const LEAST_UPVOTES = 'Least Upvotes';
+export const MOST_COMMENTS = 'Most Comments';
+export const LEAST_COMMENTS = 'Least Comments';
